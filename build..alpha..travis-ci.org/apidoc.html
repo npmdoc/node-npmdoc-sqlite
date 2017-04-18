@@ -1,0 +1,191 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/kriasoft/node-sqlite#readme"
+
+    >sqlite (v2.5.0)</a>
+</h1>
+<h4>SQLite client for Node.js applications with SQL-based migrations API</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sqlite">module sqlite</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sqlite.Promise">
+            function <span class="apidocSignatureSpan">sqlite.</span>Promise
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sqlite.open">
+            function <span class="apidocSignatureSpan">sqlite.</span>open
+            <span class="apidocSignatureSpan">(filename, { mode = null, verbose = false, Promise = promise } = {})</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sqlite.</span>driver</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sqlite" id="apidoc.module.sqlite">module sqlite</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sqlite.Promise" id="apidoc.element.sqlite.Promise">
+        function <span class="apidocSignatureSpan">sqlite.</span>Promise
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+get changes() {
+  return this.stmt.changes;
+}
+
+bind() {
+  const params = prepareParams(arguments);
+  return new this.<span class="apidocCodeKeywordSpan">Promise</span>((resolve, reject) =&#x3e; {
+    this.stmt.bind(params, err =&#x3e; {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(this);
+      }
+    });
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sqlite.open" id="apidoc.element.sqlite.open">
+        function <span class="apidocSignatureSpan">sqlite.</span>open
+        <span class="apidocSignatureSpan">(filename, { mode = null, verbose = false, Promise = promise } = {})</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(filename, { mode = null, verbose = false, Promise = promise } = {}) =&#x3e; {
+  let driver;
+
+  if (verbose) {
+    sqlite3.verbose();
+  }
+
+  return new Promise((resolve, reject) =&#x3e; {
+    if (mode !== null) {
+      driver = new sqlite3.Database(filename, mode, err =&#x3e; {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    } else {
+      driver = new sqlite3.Database(filename, err =&#x3e; {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    }
+  }).then(() =&#x3e; {
+    db.driver = driver;
+    db.Promise = Promise;
+    return new Database(driver, { Promise });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  } catch (err) {
+    next(err);
+  }
+});
+
+Promise.resolve()
+  // First, try connect to the database
+  .then(() =&#x3e; db.<span class="apidocCodeKeywordSpan">open</span>(&#x27;./database.sqlite&#x27;, { Promise }))
+  .catch(err =&#x3e; console.error(err.stack))
+  // Finally, launch Node.js app
+  .finally(() =&#x3e; app.listen(port));
+```
+
+**NOTE**: For Node.js v5 and below use `var db = require(&#x27;sqlite/legacy&#x27;);`.
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
