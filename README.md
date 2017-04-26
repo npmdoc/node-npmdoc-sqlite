@@ -1,6 +1,6 @@
 # npmdoc-sqlite
 
-#### api documentation for  [sqlite (v2.5.0)](https://github.com/kriasoft/node-sqlite#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sqlite.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sqlite) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sqlite.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sqlite)
+#### basic api documentation for  [sqlite (v2.5.0)](https://github.com/kriasoft/node-sqlite#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sqlite.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sqlite) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sqlite.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sqlite)
 
 #### SQLite client for Node.js applications with SQL-based migrations API
 
@@ -82,7 +82,8 @@
     },
     "scripts": {},
     "types": "main.d.ts",
-    "version": "2.5.0"
+    "version": "2.5.0",
+    "bin": {}
 }
 ```
 
